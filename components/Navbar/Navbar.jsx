@@ -11,12 +11,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { FaPowerOff } from 'react-icons/fa';
 import { IoMdLogIn } from 'react-icons/io';
 import { AiFillHome, AiFillInfoCircle } from 'react-icons/ai';
-import {
-  BsFillPeopleFill,
-  BsFillMusicPlayerFill,
-} from 'react-icons/bs';
+import { BsFillPeopleFill, BsFillMusicPlayerFill } from 'react-icons/bs';
 import { getUserDetails } from '../../actions/authAction';
-
 
 const Navbar = () => {
   const logout = () => {
@@ -27,10 +23,10 @@ const Navbar = () => {
   };
   const [nav, setNav] = useState('home');
   const dispatch = useDispatch();
-  const authenticated = useSelector((state) => state.auth);
+  const authenticated = useSelector(state => state.auth);
   const [scrollState, setScrollState] = useState('top');
   useEffect(() => {
-    const listener = document.addEventListener('scroll', (e) => {
+    const listener = document.addEventListener('scroll', () => {
       var scrolled = document.scrollingElement.scrollTop;
 
       if (scrolled >= 1) {
@@ -53,7 +49,7 @@ const Navbar = () => {
     if (cookie.get('token')) {
       dispatch(getUserDetails());
     }
-  }, []);
+  }, [dispatch]);
   const [open, setOpen] = React.useState(false);
 
   const onOpenModal = () => setOpen(true);
@@ -72,7 +68,7 @@ const Navbar = () => {
               cursor: 'pointer',
               color: `${method === 'login' ? 'wheat' : 'gray'}`,
             }}
-            onClick={(res) => {
+            onClick={() => {
               setMethod('login');
             }}
           >
@@ -83,14 +79,14 @@ const Navbar = () => {
               cursor: 'pointer',
               color: `${method === 'signup' ? 'wheat' : 'gray'}`,
             }}
-            onClick={(res) => {
+            onClick={() => {
               setMethod('signup');
             }}
           >
             Signup
           </p>
         </div>
-        <hr className="divider"></hr>
+        <hr className='divider'></hr>
 
         {method === 'login' ? (
           <Login onCloseModal={onCloseModal} />
@@ -98,7 +94,7 @@ const Navbar = () => {
           <Signup onCloseModal={onCloseModal} />
         )}
         <br />
-        <hr className="divider"></hr>
+        <hr className='divider'></hr>
         {/* By submitting this form, you confirm that you agree to our Terms of Service and Privacy Policy. */}
         <div style={{ textAlign: 'center' }}>
           {method === 'login' ? (
@@ -106,7 +102,7 @@ const Navbar = () => {
               Don’t have an account?{' '}
               <span
                 style={{ color: 'wheat', cursor: 'pointer' }}
-                onClick={(res) => {
+                onClick={() => {
                   setMethod('signup');
                 }}
               >
@@ -119,7 +115,7 @@ const Navbar = () => {
                 Already have an account?{' '}
                 <span
                   style={{ color: 'wheat', cursor: 'pointer' }}
-                  onClick={(res) => {
+                  onClick={() => {
                     setMethod('login');
                   }}
                 >
@@ -129,7 +125,7 @@ const Navbar = () => {
 
               <p style={{ color: 'gray', fontSize: 'x-small' }}>
                 By submitting this form, you confirm that you agree to our{' '}
-                <a href="/privacy-policy">
+                <a href='/privacy-policy'>
                   <span style={{ color: 'wheat', cursor: 'pointer' }}>
                     Terms of Service and Privacy Policy
                   </span>
@@ -153,7 +149,7 @@ const Navbar = () => {
         }}
         closeIcon={closeIcon}
       >
-        <AuthModal />{' '}
+        <AuthModal />
       </Modal>
       <div
         className={
@@ -162,39 +158,38 @@ const Navbar = () => {
             : style.navbar__box
         }
       >
-        <Link scroll={true} href="/">
+        <Link scroll={true} href='/'>
           <div className={style.neon}>VOVOCA</div>
         </Link>
         <div className={style.nav__bar}>
           <ul className={style.nav__items}>
-            <Link scroll={true} href="/">
+            <Link scroll={true} href='/'>
               <li className={style.list__items}>Home</li>
             </Link>
-            <Link scroll={true} href="/#about">
+            <Link scroll={true} href='/#about'>
               <li className={style.list__items}>About us</li>
             </Link>
             {authenticated.isAuthenticated === true ? (
-              <Link href="/allMusic">
+              <Link href='/allMusic'>
                 <li className={style.list__items}>Listen Now</li>
               </Link>
             ) : (
               <></>
             )}
-            <Link scroll={true} href="/testimonial">
+            <Link scroll={true} href='/testimonial'>
               <li className={style.list__items}>Testimonials</li>
             </Link>
-            <Link scroll={true} href="/developers">
+            <Link scroll={true} href='/developers'>
               <li className={style.list__items}>Team</li>
             </Link>
             {authenticated.isAuthenticated === true ? (
-              <Link scroll={true} href="/dashboard">
-                
+              <Link scroll={true} href='/dashboard'>
                 <button
                   style={{ marginLeft: '25px', padding: '0.4em 1em' }}
-                  id="dashboard"
+                  id='dashboard'
                 >
                   <p
-                    htmlFor="dashboard"
+                    htmlFor='dashboard'
                     style={{
                       color: 'wheat',
                       padding: 0,
@@ -228,25 +223,25 @@ const Navbar = () => {
       {authenticated.isAuthenticated === true ? (
         <>
           <div className={style.mobile__header}>
-            <Link scroll={true} href="/">
+            <Link scroll={true} href='/'>
               <div className={style.neon}>VOVOCA</div>
             </Link>
           </div>
           <div className={style.dashnav_mobile}>
-            <Link scroll={true} href="/allMusic">
+            <Link scroll={true} href='/allMusic'>
               <p
                 className={style.navtext}
-                onClick={(r) => setNav('category')}
+                onClick={() => setNav('category')}
                 style={{ color: `${nav === 'category' ? 'wheat' : 'gray'}` }}
               >
                 <BsFillMusicPlayerFill />
                 <span className={style.text_mobile}>All Music</span>
               </p>
             </Link>
-            <Link scroll={true} href="/">
+            <Link scroll={true} href='/'>
               <p
                 className={style.navtext}
-                onClick={(r) => setNav('trending')}
+                onClick={() => setNav('trending')}
                 style={{ color: `${nav === 'trending' ? 'wheat' : 'gray'}` }}
               >
                 {' '}
@@ -254,10 +249,10 @@ const Navbar = () => {
                 <span className={style.text_mobile}>Home</span>
               </p>
             </Link>
-            <Link scroll={true} href="/dashboard">
+            <Link scroll={true} href='/dashboard'>
               <p
                 className={style.navtext}
-                onClick={(r) => setNav('history')}
+                onClick={() => setNav('history')}
                 style={{ color: `${nav === 'history' ? 'wheat' : 'gray'}` }}
               >
                 {' '}
@@ -268,11 +263,13 @@ const Navbar = () => {
             </Link>
             <p
               className={style.navtext}
-              onClick={(r) => setNav('logout')}
+              onClick={() => {
+                setNav('logout');
+                logout();
+              }}
               style={{
                 color: `${nav === 'logout' ? 'rgb(218, 84, 84)' : 'gray'}`,
               }}
-              onClick={() => logout()}
             >
               <FaPowerOff />
               <span className={style.text_mobile}>Logout</span>
@@ -282,15 +279,15 @@ const Navbar = () => {
       ) : (
         <>
           <div className={style.mobile__header}>
-            <Link scroll={true} href="/">
+            <Link scroll={true} href='/'>
               <div className={style.neon}>VOVOCA</div>
             </Link>
           </div>
           <div className={style.dashnav_mobile}>
-            <Link scroll={true} href="/testimonial">
+            <Link scroll={true} href='/testimonial'>
               <p
                 className={style.navtext}
-                onClick={(r) => setNav('testimonial')}
+                onClick={() => setNav('testimonial')}
                 style={{ color: `${nav === 'testimonial' ? 'wheat' : 'gray'}` }}
               >
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -298,10 +295,10 @@ const Navbar = () => {
                 <span className={style.text_mobile}>Testimonial</span>
               </p>
             </Link>
-            <Link scroll={true} href="/developers">
+            <Link scroll={true} href='/developers'>
               <p
                 className={style.navtext}
-                onClick={(r) => setNav('history')}
+                onClick={() => setNav('history')}
                 style={{ color: `${nav === 'history' ? 'wheat' : 'gray'}` }}
               >
                 {' '}
@@ -310,10 +307,10 @@ const Navbar = () => {
                 <span className={style.text_mobile}>Team</span>
               </p>
             </Link>
-            <Link scroll={true} href="/">
+            <Link scroll={true} href='/'>
               <p
                 className={style.navtext}
-                onClick={(r) => setNav('home')}
+                onClick={() => setNav('home')}
                 style={{ color: `${nav === 'home' ? 'wheat' : 'gray'}` }}
               >
                 {' '}
@@ -321,10 +318,10 @@ const Navbar = () => {
                 <span className={style.text_mobile}>Home</span>
               </p>
             </Link>
-            <Link scroll={true} href="/#about">
+            <Link scroll={true} href='/#about'>
               <p
                 className={style.navtext}
-                onClick={(r) => setNav('about')}
+                onClick={() => setNav('about')}
                 style={{ color: `${nav === 'about' ? 'wheat' : 'gray'}` }}
               >
                 {' '}
@@ -333,17 +330,17 @@ const Navbar = () => {
                 <span className={style.text_mobile}>About</span>
               </p>
             </Link>
-            
 
             <p
               className={style.navtext}
-              onClick={(r) => setNav('logout')}
+              onClick={() => {
+                setNav('logout');
+                onOpenModal();
+              }}
               style={{
                 color: `${nav === 'logout' ? 'rgb(218, 84, 84)' : 'gray'}`,
               }}
-              onClick={onOpenModal}
             >
-              {' '}
               &nbsp;
               <IoMdLogIn />
               <span className={style.text_mobile}>Login</span>

@@ -1,4 +1,3 @@
-import { FaAcquisitionsIncorporated } from "react-icons/fa";
 import {
   GET_MUSIC,
   GET_MUSIC_SINGLE,
@@ -9,7 +8,7 @@ import {
   CATEGORISED_MUSIC,
   RESET_CATEGORISED_MUSIC,
   SET_ERROR,
-} from "../actions/type";
+} from '../actions/type';
 
 const initialState = {
   musics: null,
@@ -75,7 +74,7 @@ const reducer = (state = initialState, action) => {
     case SET_ERROR:
       return {
         ...state,
-        error: "No Music Founded",
+        error: 'No Music Founded',
       };
     default:
       return state;

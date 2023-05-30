@@ -4,30 +4,26 @@ import { useSelector } from 'react-redux';
 import { loginUser } from '../../../actions/authAction';
 import { toast } from 'react-toastify';
 import { useDispatch } from 'react-redux';
-import Router from 'next/router'
+import Router from 'next/router';
 
-const Login = (props) => {
+const Login = props => {
   const dispatch = useDispatch();
-  const error = useSelector((state) => state.error);
-  const authenticate = useSelector((state) => state.auth.isAuthenticated);
+  const error = useSelector(state => state.error);
   const [login, setLogin] = useState({
     email: '',
     password: '',
   });
-  const handleChange = (e) => {
+  const handleChange = e => {
     login[e.target.name] = e.target.value;
     setLogin(login);
   };
-  const notify = (category) => {
+  const notify = category => {
     if (category === 'success') {
-
       toast('Loggedin Successfully', {
         closeButton: false,
         className: style.toast_success_background,
       });
-      Router.push("/dashboard")
-
-
+      Router.push('/dashboard');
     } else {
       console.log(error);
       toast(error.err || 'Something went wrong', {
@@ -37,25 +33,22 @@ const Login = (props) => {
     }
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async e => {
     e.preventDefault();
 
     if (login.email === '' || login.password === '') {
-      toast.error('All feilds are Mandatory', {
+      toast.error('All fields are Mandatory', {
         closeButton: false,
       });
     } else {
-      dispatch(loginUser(login.email, login.password)).then((res) => {
+      dispatch(loginUser(login.email, login.password)).then(res => {
         if (res === true) {
-        
           props.onCloseModal();
           notify('success');
         } else {
           notify('error');
         }
       });
-
-     
     }
   };
   return (
@@ -66,17 +59,17 @@ const Login = (props) => {
           <div className={style.inputs}>
             <input
               className={style.feild__input}
-              type="email"
-              placeholder="email*"
-              name="email"
+              type='email'
+              placeholder='email*'
+              name='email'
               required
               onChange={handleChange}
             />
             <input
               className={style.feild__input}
-              type="password"
-              placeholder="password*"
-              name="password"
+              type='password'
+              placeholder='password*'
+              name='password'
               required
               onChange={handleChange}
             />

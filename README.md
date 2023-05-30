@@ -12,7 +12,7 @@ Vovoca is an online music streaming and downloading website, and the coolest fea
 
 ## Features of Vovoca:
 
-- Trednding Music
+- Trending Music
 - Lastest Music
 - Upload Music
 - Download Music
@@ -88,3 +88,22 @@ If you made up you mind to contribute the fork the repository and star it, and t
 - Once Assigned work on it, and then Create the Pull Request.
 - After PR wait until Project Coordinator Accepts/Reverts the Changes.
 - Once Accepted Issue will be closed
+
+### Varun Singh | Maintainer | discord: username: v-varun#4539  
+
+Staging deployments can be seen using this link [vovoca-staging](https://vovoca-frontend-deploy-4yl1ue967-varun-singhh.vercel.app)   
+Production deployments can be seen using this link [vovoca-production](https://vovoca-frontend-deploy.vercel.app)
+
+# ✨Our Contributors
+Thanks a lot for spending your time Vovoca grow. Thanks a lot! Keep rocking
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<table>
+	<tr>
+		<td>
+      <a href="https://github.com/Deveimer/vovoca-frontend/graphs/contributors">
+         <img src="https://contrib.rocks/image?max=50&repo=Deveimer/vovoca-frontend" />
+      </a>
+		</td>
+	</tr>
+</table>

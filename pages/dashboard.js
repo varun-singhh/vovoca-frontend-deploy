@@ -1,14 +1,14 @@
-import React from "react";
-import UserDashboard from "../components/Dashboard/UserDashboard";
-import { useSelector } from "react-redux";
-import cookie from "js-cookie";
-import Head from "next/head";
+import React from 'react';
+import UserDashboard from '../components/Dashboard/UserDashboard';
+import { useSelector } from 'react-redux';
+import cookie from 'js-cookie';
+import Head from 'next/head';
 
-const dashboard = () => {
-  const authenticated = useSelector((state) => state.auth);
+const Dashboard = () => {
+  const authenticated = useSelector(state => state.auth);
   var token;
   if (process.browser) {
-    token = cookie.get("token");
+    token = cookie.get('token');
   }
 
   return (
@@ -19,12 +19,12 @@ const dashboard = () => {
       {authenticated.isAuthenticated || token ? (
         <UserDashboard />
       ) : process.browser ? (
-        (window.location.href = "/")
+        (window.location.href = '/')
       ) : (
-        ""
+        ''
       )}
     </div>
   );
 };
 
-export default dashboard;
+export default Dashboard;
